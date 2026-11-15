@@ -28,8 +28,8 @@ The original system was an ASP.NET Web Forms application with well over a hundre
 - Delivered the reporting module with shared filter components and multi-format export.
 - Designed and documented the design system, including dark mode and runtime accent colours.
 - Hardened authentication and diagnosed legacy defects during the migration.
-- Maintained the product across **four bank-specific deployments**, each with its own database, branding and report set.
-- Took all four deployments through a corporate **SonarQube** compliance gate, from roughly 4,000 findings to a clean scan with no behaviour change.
+- Maintained the product across **several bank-specific deployments**, each with its own database, branding and report set.
+- Took every deployment through a corporate **SonarQube** compliance gate, from thousands of findings to a clean scan with no behaviour change.
 
 ## Key Features
 
@@ -85,20 +85,20 @@ flowchart LR
     RE --> HOST[("Core card system")]
 ```
 
-- **Layered design:** page model, service and repository for every feature, with dependency injection throughout (around 40 services and 40 repositories).
+- **Layered design:** page model, service and repository for every feature, with dependency injection throughout (dozens of services and repositories).
 - **React island:** both dashboards share one self-contained React bundle that receives its mode and filter options from the host page, avoiding an extra round trip.
 - **Database contract treated as fixed:** all reporting and administration use the existing database routines, so the new app is a drop-in replacement.
 
 ## Engineering Highlights
 
-- **Large legacy consolidation.** Consolidated well over a hundred legacy pages and dozens of user controls into about 25 Razor Pages.
-- **95%+ smaller front end.** Replaced a 97 MB bundle of legacy third-party themes with a 1.5 MB self-hosted build suitable for offline bank intranets.
+- **Large legacy consolidation.** Consolidated well over a hundred legacy pages and dozens of user controls into a few dozen Razor Pages.
+- **Over 95% smaller front end.** Replaced a bundle of legacy third-party themes close to 100 MB with a self-hosted build of under 2 MB suitable for offline bank intranets.
 - **Recovered legacy contracts.** Read the legacy source to recover exactly how existing database routines behave, which exposed and fixed a defect in user provisioning without any database change.
 - **Theming across two rendering stacks.** Kept light/dark mode and runtime accent colours consistent between the Tailwind-rendered pages and the Material UI dashboard, including converting colour formats the two libraries handle differently.
 - **Honest data presentation.** Charts that a filter does not affect say so, and empty results show an empty state rather than unrelated data.
 - **Developable without production data.** A mock-data mode lets the dashboards be built and reviewed on machines without database access, backed by a written server-side test checklist.
-- **Static-analysis compliance at scale.** Resolved about 3,960 SonarQube findings (bugs, vulnerabilities, code smells, accessibility) across four deployments to a clean scan. Each fix was verified with local analyzer builds, and scripts confirmed that generated SQL stayed byte-identical, so behaviour did not change.
-- **Cross-deployment engineering.** Compared four diverged codebases, reused verified fixes where code was identical and fixed divergent code individually.
+- **Static-analysis compliance at scale.** Resolved thousands of SonarQube findings (bugs, vulnerabilities, code smells, accessibility) across several deployments to a clean scan. Each fix was verified with local analyzer builds, and scripts confirmed that generated SQL stayed byte-identical, so behaviour did not change.
+- **Cross-deployment engineering.** Compared several diverged codebases, reused verified fixes where code was identical and fixed divergent code individually.
 - **Bounded-memory exports.** Replaced in-memory exports with streaming CSV, Excel and PDF writers, added server-side paging for heavy reports, and throttled expensive report runs.
 - **Accessible, CAPTCHA-free sign-in.** Bot protection built from session tokens, honeypot and timing checks, so keyboard and assistive-technology users are never blocked.
 
