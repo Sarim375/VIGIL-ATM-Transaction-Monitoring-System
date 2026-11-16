@@ -64,6 +64,7 @@ The original system was an ASP.NET Web Forms application with well over a hundre
 | Back end | .NET 10, ASP.NET Core Razor Pages, C# |
 | Data access | Dapper and ADO.NET over SQL Server stored procedures; ODBC for an IBM i system |
 | Dashboard | React 19, Material UI, MUI X Charts, built with Vite |
+| APIs | REST-style JSON endpoints consumed by the React dashboard |
 | UI | Tailwind CSS 4, Flowbite, Chart.js, server-rendered partials |
 | Exports | Excel and PDF generation libraries, CSV |
 | Security | Cookie authentication, client-side credential encryption via WebCrypto, anti-forgery tokens |
@@ -78,7 +79,7 @@ flowchart LR
         RI["React dashboard island<br/>(Material UI)"]
     end
     RP --> MW
-    RI -->|JSON handlers| MW
+    RI -->|REST / JSON| MW
     MW["Middleware<br/>auth, permissions, audit"] --> PM["Page models"]
     PM --> SV["Services"] --> RE["Repositories"]
     RE --> DB[("Operations database")]
@@ -104,7 +105,7 @@ flowchart LR
 
 ## Skills Demonstrated
 
-`C#` · `.NET 10` · `ASP.NET Core Razor Pages` · `React` · `Material UI` · `Tailwind CSS` · `Vite` · `Dapper` · `SQL Server` · `Legacy migration (Web Forms)` · `Dashboards and data visualisation` · `Accessibility (WCAG)` · `Design systems` · `Web security` · `SonarQube / static analysis` · `Streaming exports` · `Banking operations domain`
+`C#` · `.NET 10` · `ASP.NET Core Razor Pages` · `React` · `Material UI` · `Tailwind CSS` · `Vite` · `Dapper` · `REST APIs` · `SQL Server` · `Legacy migration (Web Forms)` · `Dashboards and data visualisation` · `Accessibility (WCAG)` · `Design systems` · `Web security` · `SonarQube / static analysis` · `Streaming exports` · `Banking operations domain`
 
 ---
 
